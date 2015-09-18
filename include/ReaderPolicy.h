@@ -5,7 +5,7 @@
 #ifndef FLUKACONVERTER_READER_H
 #define FLUKACONVERTER_READER_H
 
-#include <bits/stringfwd.h>
+#include <string>
 #include "ParsedElement.h"
 
 namespace FConverter {

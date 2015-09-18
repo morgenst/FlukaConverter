@@ -17,13 +17,22 @@ namespace FConverter {
     Converter<ReadPolicy, WritePolicy>::~Converter() { }
 
     template<typename ReadPolicy, typename WritePolicy>
-    void Converter<ReadPolicy, WritePolicy>::convert() { }
+    void Converter<ReadPolicy, WritePolicy>::convert() {
+        read();
+        write();
+    }
 
     template <typename ReadPolicy, typename WritePolicy>
     void Converter<ReadPolicy, WritePolicy>::open() throw(InvalidInput){
         m_stream.open(m_fInput);
         if(!m_stream.is_open())
             throw new InvalidInput{};
+    }
+
+    template<typename ReadPolicy, typename WritePolicy>
+    void Converter<ReadPolicy, WritePolicy>::close() noexcept {
+        if(m_stream.is_open())
+            m_stream.close();
     }
 
     template<typename ReadPolicy, typename WritePolicy>
@@ -36,11 +45,14 @@ namespace FConverter {
             throw e;
         }
         string line;
+        Data::const_iterator currentHeader;
         while(getline(m_stream, line)) {
             auto element = parse(line);
+            if(element.getType() == ParsedType::skip)
+                continue;
             if (element.getType() == ParsedType::header) {
-                const auto it = m_data.find(element);
-                if (it != m_data.end())
+                currentHeader = m_data.find(element);
+                if (currentHeader != m_data.end())
                     cerr << "Table already in parsed input" << endl;
                 //continue;
             }

@@ -28,6 +28,7 @@ namespace FConverter{
         void convert();
     private:
         void open() throw(InvalidInput);
+        void close() noexcept ;
         void read() throw(InvalidInput);
         void write();
         std::string m_fInput;

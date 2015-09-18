@@ -7,6 +7,6 @@
 namespace FConverter{
     using namespace std;
     ParsedElement&& parse(const string& line){
-
+        return (std::move(SkipElement()));
     }
 }
