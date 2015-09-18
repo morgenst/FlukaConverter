@@ -20,6 +20,7 @@ namespace FConverter{
         using DataElement = std::pair<std::unique_ptr<HeaderElement>, std::vector<std::vector<std::string>>>;
         using Data = std::map<std::unique_ptr<HeaderElement>, std::vector<std::vector<std::string>>>;
         using ReadPolicy::parse;
+        using WritePolicy::invoke;
 
     public:
         Converter() = delete;

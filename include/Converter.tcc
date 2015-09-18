@@ -72,9 +72,12 @@ namespace FConverter {
                 continue;
             }
         }
+        close();
     }
 
     template<typename ReadPolicy, typename WritePolicy>
-    void Converter<ReadPolicy, WritePolicy>::write() { }
+    void Converter<ReadPolicy, WritePolicy>::write() {
+        invoke(m_fOutput, move(m_data));
+    }
 }
 #endif //FLUKACONVERTER_CONVERTER_TCC

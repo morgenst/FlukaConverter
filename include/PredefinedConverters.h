@@ -10,7 +10,7 @@
 #include "WriterPolicy.h"
 
 namespace FConverter {
-     class ResnucTabExcelConverter : public Converter<ResnucTabReaderPolicy, WriterPolicy>{
+     class ResnucTabExcelConverter : public Converter<ResnucTabReaderPolicy, ExcelWriterPolicy>{
      public:
          ResnucTabExcelConverter(const std::string& fInput) : Converter(fInput) {}
      };
