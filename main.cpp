@@ -1,5 +1,8 @@
 #include <iostream>
 #include <string>
+#include <PredefinedConverters.h>
+
+#include "PredefinedConverters.h"
 #include "boost/program_options.hpp"
 
 using namespace std;
@@ -14,5 +17,8 @@ int main(int argc, const char** argv) {
             ;
     po::variables_map vm;
     po::store(po::parse_command_line(argc, argv, parser), vm);
+    FConverter::ResnucTabExcelConverter converter(vm["infile"].as<string>());
+    converter.convert();
+
     return 0;
 }

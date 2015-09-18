@@ -6,8 +6,13 @@
 #define FLUKACONVERTER_CONVERTER_TCC
 
 #include <iostream>
+#include <memory>
 
+#include "boost/algorithm/string.hpp"
+
+#include "Utils.h"
 using namespace std;
+using namespace boost;
 
 namespace FConverter {
     template<typename ReadPolicy, typename WritePolicy>
@@ -45,19 +50,28 @@ namespace FConverter {
             throw e;
         }
         string line;
-        Data::const_iterator currentHeader;
+        Data::iterator currentHeader;
         while(getline(m_stream, line)) {
-            auto element = parse(line);
-            if(element.getType() == ParsedType::skip)
+            auto element = parse(move(line));
+            if(element->getType() == ParsedType::skip)
                 continue;
-            if (element.getType() == ParsedType::header) {
-                currentHeader = m_data.find(element);
+
+            if (element->getType() == ParsedType::header) {
+                auto headerPtr = Utils::static_cast_ptr<HeaderElement>(element);
+                currentHeader = m_data.find(headerPtr);
                 if (currentHeader != m_data.end())
                     cerr << "Table already in parsed input" << endl;
-                //continue;
+                m_data[std::move(headerPtr)] = vector<vector<string>>{};
+                continue;
+            }
+
+            if(element->getType() == ParsedType::row){
+                vector<string> res;
+                split(res, line, is_any_of("\t "), token_compress_on);
+                currentHeader->second.push_back(std::move(res));
+                continue;
             }
         }
-
     }
 
     template<typename ReadPolicy, typename WritePolicy>

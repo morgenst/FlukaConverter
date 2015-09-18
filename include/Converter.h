@@ -7,15 +7,18 @@
 
 #include <fstream>
 #include <map>
+#include <memory>
 #include <string>
 #include <vector>
+#include <bits/unique_ptr.h>
 #include "Exceptions.h"
 #include "ParsedElement.h"
 
 namespace FConverter{
     template <typename ReadPolicy, typename WritePolicy>
-    class Converter{
-        using Data = std::map<HeaderElement, std::vector<RowElement>>;
+    class Converter : private ReadPolicy, private WritePolicy{
+        using DataElement = std::pair<std::unique_ptr<HeaderElement>, std::vector<std::vector<std::string>>>;
+        using Data = std::map<std::unique_ptr<HeaderElement>, std::vector<std::vector<std::string>>>;
         using ReadPolicy::parse;
 
     public:
@@ -37,6 +40,7 @@ namespace FConverter{
         std::ifstream m_stream;
     };
 }
+
 #include "Converter.tcc"
 
 #endif //FLUKACONVERTER_CONVERTER_H
