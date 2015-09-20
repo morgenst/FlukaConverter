@@ -14,7 +14,7 @@ Checkout from git, run cmake . and enter (g)make. *Note:* In order to find the b
 
 export $BOOST_INC_DIR=path_to_boost/include/
 
-export $BOOST_INC_DIR=path_to_boost/lib/
+export $BOOST_LIB_DIR=path_to_boost/lib/
 
 ## Features (Version 1.0)
 
