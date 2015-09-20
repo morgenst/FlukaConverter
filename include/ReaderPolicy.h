@@ -25,7 +25,7 @@ namespace FConverter {
 
     class ResnucTabReaderPolicy : public ReaderPolicy {
     public:
-        ResnucTabReaderPolicy() : ReaderPolicy("^\\s*[0-9]{1,3}\\s*[0-9]{1,3}\\s*([0-9]{0,1}\\s*)[0-9]*.[0-9]*(E(\\+|\\-)[0-9]{2,3}){0,1}\\s*[0-9]*.[0-9]*\\s*"){}
+        ResnucTabReaderPolicy() : ReaderPolicy("^\\s*[0-9]{1,3}\\s*[0-9]{1,3}\\s*([0-9]{0,1}\\s*)[0-9]*.[0-9]*(E(\\+|\\-)[0-9]{2,3}){0,1}\\s*[0-9]*.[0-9]*\\.[0-9]*(E(\\+|\\-)[0-9]{2,3}){0,1}\\s*"){}
         std::shared_ptr<ParsedElement> parse(std::string&&) override ;
     };
 }

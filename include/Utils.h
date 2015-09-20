@@ -22,6 +22,8 @@ namespace Utils{
 
     template<typename VecType>
     auto getMaxSize(const std::vector<std::vector<VecType>>* const vec){
+        if(vec->size() == 0)
+            return static_cast<decltype(vec->front().size())> (0);
         std::vector<decltype(vec->front().size())> vecTmp(vec->size());
         std::transform(vec->begin(), vec->end(), vecTmp.begin(), std::mem_fun_ref(&std::vector<VecType>::size));
         return *(std::max_element(vecTmp.begin(), vecTmp.end()));

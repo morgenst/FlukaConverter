@@ -40,9 +40,9 @@ namespace FConverter{
 
     void ExcelWriterPolicy::addNewSheet(const DataElement& sheetInfo){
         m_fOutput << "<Worksheet ss:Name=\"" << sheetInfo.first->getVal() << "\">";
-        auto nRow = sheetInfo.second.size();
+        auto nRow = 5000;sheetInfo.second.size();
         auto nColumn = Utils::getMaxSize(&sheetInfo.second);
-        m_fOutput << "<Table ss:ExpandedColumnCount=\"5\" ss:ExpandedRowCount=\"" << nRow << "\" \n \
+        m_fOutput << "<Table ss:ExpandedColumnCount=\"" << nColumn << "\" ss:ExpandedRowCount=\"" << nRow << "\" \n \
         x:FullColumns=\"1\" x:FullRows=\"1\"> \n";
         for(const auto& data: sheetInfo.second)
             addRow(move(data));
