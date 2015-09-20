@@ -2,8 +2,8 @@
 // Created by morgenst on 18/09/15.
 //
 
-#ifndef FLUKACONVERTER_PREDEFINEDCONVERTERS_H_H
-#define FLUKACONVERTER_PREDEFINEDCONVERTERS_H_H
+#ifndef FLUKACONVERTER_PREDEFINEDCONVERTERS_H
+#define FLUKACONVERTER_PREDEFINEDCONVERTERS_H
 
 #include "Converter.h"
 #include "ReaderPolicy.h"
@@ -15,4 +15,4 @@ namespace FConverter {
          ResnucTabExcelConverter(const std::string& fInput, const std::string& fOutput) : Converter(fInput, fOutput) {}
      };
 }
-#endif //FLUKACONVERTER_PREDEFINEDCONVERTERS_H_H
+#endif //FLUKACONVERTER_PREDEFINEDCONVERTERS_H
