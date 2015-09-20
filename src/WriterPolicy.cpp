@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "WriterPolicy.h"
+#include "Utils.h"
 
 namespace FConverter{
 
@@ -33,14 +34,14 @@ namespace FConverter{
     void ExcelWriterPolicy::addRow(const Data& data) {
         m_fOutput << "<Row> \n";
         for (const auto &value : data)
-        addCell(move(value));
+            addCell(move(value));
         m_fOutput << "</Row> \n";
     }
 
     void ExcelWriterPolicy::addNewSheet(const DataElement& sheetInfo){
         m_fOutput << "<Worksheet ss:Name=\"" << sheetInfo.first->getVal() << "\">";
-        //TODO: calculate correct number of columns and rows;
         auto nRow = sheetInfo.second.size();
+        auto nColumn = Utils::getMaxSize(&sheetInfo.second);
         m_fOutput << "<Table ss:ExpandedColumnCount=\"5\" ss:ExpandedRowCount=\"" << nRow << "\" \n \
         x:FullColumns=\"1\" x:FullRows=\"1\"> \n";
         for(const auto& data: sheetInfo.second)
@@ -107,7 +108,3 @@ namespace FConverter{
         </Styles>\n";
     }
 }
-/*
-
-        </Workbook>
-        */
