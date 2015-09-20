@@ -12,7 +12,7 @@
 namespace FConverter {
      class ResnucTabExcelConverter : public Converter<ResnucTabReaderPolicy, ExcelWriterPolicy>{
      public:
-         ResnucTabExcelConverter(const std::string& fInput) : Converter(fInput) {}
+         ResnucTabExcelConverter(const std::string& fInput, const std::string& fOutput) : Converter(fInput, fOutput) {}
      };
 }
 #endif //FLUKACONVERTER_PREDEFINEDCONVERTERS_H_H

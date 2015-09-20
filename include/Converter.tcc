@@ -16,7 +16,9 @@ using namespace boost;
 
 namespace FConverter {
     template<typename ReadPolicy, typename WritePolicy>
-    Converter<ReadPolicy, WritePolicy>::Converter(const std::string& fInput) : m_fInput(std::move(fInput)){ }
+    Converter<ReadPolicy, WritePolicy>::Converter(const std::string& fInput,
+                                                  const std::string& fOutput) : m_fInput(std::move(fInput)),
+                                                                                m_fOutput(fOutput){ }
 
     template<typename ReadPolicy, typename WritePolicy>
     Converter<ReadPolicy, WritePolicy>::~Converter() { }
@@ -24,6 +26,7 @@ namespace FConverter {
     template<typename ReadPolicy, typename WritePolicy>
     void Converter<ReadPolicy, WritePolicy>::convert() {
         read();
+        cout << "write" << endl;
         write();
     }
 

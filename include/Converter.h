@@ -10,7 +10,6 @@
 #include <memory>
 #include <string>
 #include <vector>
-#include <bits/unique_ptr.h>
 #include "Exceptions.h"
 #include "ParsedElement.h"
 
@@ -24,7 +23,7 @@ namespace FConverter{
 
     public:
         Converter() = delete;
-        Converter(const std::string& fInput);
+        Converter(const std::string& fInput, const std::string& fOutput);
         constexpr Converter(const Converter&) = delete;
         constexpr Converter& operator=(const Converter&) = delete;
         ~Converter();

@@ -16,7 +16,7 @@ namespace FConverter {
         virtual std::unique_ptr<ParsedElement> parse(std::string&&) = 0;
 
     protected:
-        ReaderPolicy(const std::string& reRow) : m_reRow(reRow.c_str()) {}
+        ReaderPolicy(const std::string& reRow) : m_reRow(reRow) { }
         std::regex m_reRow;
         std::regex m_reHeader;
 
@@ -27,8 +27,6 @@ namespace FConverter {
     public:
         ResnucTabReaderPolicy() : ReaderPolicy("^\\s*[0-9]{1,3}\\s*[0-9]{1,3}\\s*([0-9]{0,1}\\s*)[0-9]*.[0-9]*(E(\\+|\\-)[0-9]{2,3}){0,1}\\s*[0-9]*.[0-9]*\\s*"){}
         std::unique_ptr<ParsedElement> parse(std::string&&) override ;
-    private:
-        std::regex m_reRow;
     };
 }
 #endif //FLUKACONVERTER_READER_H
