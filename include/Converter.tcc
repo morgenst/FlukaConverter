@@ -59,20 +59,20 @@ namespace FConverter {
             if(element->getType() == ParsedType::skip)
                 continue;
 
-            if (element->getType() == ParsedType::header) {
-                auto headerPtr = Utils::static_cast_ptr<HeaderElement>(element);
+            else if (element->getType() == ParsedType::header) {
+                auto headerPtr = dynamic_pointer_cast<HeaderElement>(element);
                 currentHeader = m_data.find(headerPtr);
                 if (currentHeader != m_data.end())
                     cerr << "Table already in parsed input" << endl;
-                m_data[std::move(headerPtr)] = vector<vector<string>>{};
-                continue;
+                m_data[headerPtr] = vector<vector<string>>{};
+                currentHeader = m_data.find(headerPtr);
+                vector<vector<string> >* foo = &m_data[headerPtr];
             }
 
-            if(element->getType() == ParsedType::row){
+            else if(element->getType() == ParsedType::row){
                 vector<string> res;
                 split(res, line, is_any_of("\t "), token_compress_on);
-                currentHeader->second.push_back(std::move(res));
-                continue;
+                currentHeader->second.emplace_back(res);
             }
         }
         close();

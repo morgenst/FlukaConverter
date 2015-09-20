@@ -17,5 +17,6 @@ namespace Utils{
     std::unique_ptr<CastRes> static_cast_ptr(std::unique_ptr<CastSrc>&& ptr){
         return std::unique_ptr<CastRes>(static_cast<CastRes*>(ptr.release()));
     };
+
 }
 #endif //FLUKACONVERTER_UTILS_H

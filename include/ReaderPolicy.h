@@ -13,7 +13,7 @@ namespace FConverter {
     class ReaderPolicy {
     public:
         //ReaderPolicy() = delete;
-        virtual std::unique_ptr<ParsedElement> parse(std::string&&) = 0;
+        virtual std::shared_ptr<ParsedElement> parse(std::string&&) = 0;
 
     protected:
         ReaderPolicy(const std::string& reRow) : m_reRow(reRow) { }
@@ -26,7 +26,7 @@ namespace FConverter {
     class ResnucTabReaderPolicy : public ReaderPolicy {
     public:
         ResnucTabReaderPolicy() : ReaderPolicy("^\\s*[0-9]{1,3}\\s*[0-9]{1,3}\\s*([0-9]{0,1}\\s*)[0-9]*.[0-9]*(E(\\+|\\-)[0-9]{2,3}){0,1}\\s*[0-9]*.[0-9]*\\s*"){}
-        std::unique_ptr<ParsedElement> parse(std::string&&) override ;
+        std::shared_ptr<ParsedElement> parse(std::string&&) override ;
     };
 }
 #endif //FLUKACONVERTER_READER_H

@@ -16,8 +16,8 @@
 namespace FConverter{
     class WriterPolicy{
     protected:
-        using DataCollection = std::map<std::unique_ptr<HeaderElement>, std::vector<std::vector<std::string>>>;
-        using DataElement = std::pair<const std::unique_ptr<HeaderElement>, std::vector<std::vector<std::string>>>;
+        using DataCollection = std::map<std::shared_ptr<HeaderElement>, std::vector<std::vector<std::string>>>;
+        using DataElement = std::pair<const std::shared_ptr<HeaderElement>, std::vector<std::vector<std::string>>>;
         std::ofstream m_fOutput;
         void open(const std::string&);
     public:

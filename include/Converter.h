@@ -16,8 +16,8 @@
 namespace FConverter{
     template <typename ReadPolicy, typename WritePolicy>
     class Converter : private ReadPolicy, private WritePolicy{
-        using DataElement = std::pair<std::unique_ptr<HeaderElement>, std::vector<std::vector<std::string>>>;
-        using Data = std::map<std::unique_ptr<HeaderElement>, std::vector<std::vector<std::string>>>;
+        using DataElement = std::pair<std::shared_ptr<HeaderElement>, std::vector<std::vector<std::string>>>;
+        using Data = std::map<std::shared_ptr<HeaderElement>, std::vector<std::vector<std::string>>>;
         using ReadPolicy::parse;
         using WritePolicy::invoke;
 

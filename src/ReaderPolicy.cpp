@@ -11,11 +11,11 @@
 namespace FConverter{
     using namespace std;
     using namespace boost;
-    unique_ptr <ParsedElement> ResnucTabReaderPolicy::parse(string&& line) {
+    shared_ptr <ParsedElement> ResnucTabReaderPolicy::parse(string&& line) {
         if(starts_with(line, "#"))
-            return std::move(unique_ptr<SkipElement>(new SkipElement));
+            return std::move(shared_ptr<SkipElement>(new SkipElement));
         if(regex_match(line, m_reRow))
-            return std::move(unique_ptr<RowElement>(new RowElement(move(line))));
-        return std::move(unique_ptr<HeaderElement>(new HeaderElement(move(line))));
+            return std::move(shared_ptr<RowElement>(new RowElement(move(line))));
+        return std::move(shared_ptr<HeaderElement>(new HeaderElement(move(line))));
     }
 }

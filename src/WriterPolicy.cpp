@@ -18,13 +18,12 @@ namespace FConverter{
         open(fOutput);
         writeDocHeader();
 
-        //for(const auto& dataElement : data)
-        //    addNewSheet(move(dataElement));
+        for(const auto& dataElement : data)
+            addNewSheet(move(dataElement));
         m_fOutput.close();
     }
 
     void ExcelWriterPolicy::addNewSheet(const DataElement& sheetInfo){
-        cout << sheetInfo.first->getVal() << " size: " << sheetInfo.second.size() << endl;
         m_fOutput << "<Worksheet ss:Name=\"" << sheetInfo.first->getVal() << "\">";
         /*
                            <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="5"
