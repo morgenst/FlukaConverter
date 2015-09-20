@@ -11,3 +11,11 @@ A tool for conversion of ASCII output from Fluka to Excel, LaTeX, etc.
 ## Installation
 
 Checkout from git, run cmake . and enter (g)make. 
+
+## Features (Version 1.0)
+
+Currently, ASCII file parsing from RESNUCLei scoring card (tab.lis) is implemented. Only conversion to Excel (xml format) is supported.
+
+## Contact
+
+For bug reports and feature request just drop a line to marcus.matthias.morgenstern@cern.ch.
