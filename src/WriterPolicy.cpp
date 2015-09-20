@@ -18,22 +18,34 @@ namespace FConverter{
         open(fOutput);
         writeDocHeader();
 
-        for(const auto& dataElement : data)
+        for (const auto &dataElement : data)
             addNewSheet(move(dataElement));
         m_fOutput << "</Workbook>";
         m_fOutput.close();
     }
 
+    void ExcelWriterPolicy::addCell(const Value& value){
+        m_fOutput << "<Cell> \n";
+        m_fOutput << "<Data ss:Type=\"String\">" << value << "</Data>\n ";
+        m_fOutput << "</Cell> \n";
+    }
+
+    void ExcelWriterPolicy::addRow(const Data& data) {
+        m_fOutput << "<Row> \n";
+        for (const auto &value : data)
+        addCell(move(value));
+        m_fOutput << "</Row> \n";
+    }
+
     void ExcelWriterPolicy::addNewSheet(const DataElement& sheetInfo){
         m_fOutput << "<Worksheet ss:Name=\"" << sheetInfo.first->getVal() << "\">";
-        m_fOutput << "<Table ss:ExpandedColumnCount=\"2\" ss:ExpandedRowCount=\"5\" \n \
-        x:FullColumns=\"1\" x:FullRows=\"1\"> \n \
-        <Row> \n \
-        <Cell> \n";
-        m_fOutput << "<Data ss:Type=\"String\">FOOOOOO</Data>";
-        m_fOutput << "</Cell> \n \
-        </Row> \n \
-        </Table> \n \
+        //TODO: calculate correct number of columns and rows;
+        auto nRow = sheetInfo.second.size();
+        m_fOutput << "<Table ss:ExpandedColumnCount=\"5\" ss:ExpandedRowCount=\"" << nRow << "\" \n \
+        x:FullColumns=\"1\" x:FullRows=\"1\"> \n";
+        for(const auto& data: sheetInfo.second)
+            addRow(move(data));
+        m_fOutput << "</Table> \n \
         <WorksheetOptions xmlns=\"urn:schemas-microsoft-com:office:excel\"> \n \
         <Print> \n \
         <ValidPrinterInfo /> \n \

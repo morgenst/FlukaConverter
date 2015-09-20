@@ -18,6 +18,8 @@ namespace FConverter{
     protected:
         using DataCollection = std::map<std::shared_ptr<HeaderElement>, std::vector<std::vector<std::string>>>;
         using DataElement = std::pair<const std::shared_ptr<HeaderElement>, std::vector<std::vector<std::string>>>;
+        using Data = std::vector<std::string>;
+        using Value = std::string;
         std::ofstream m_fOutput;
         void open(const std::string&);
     public:
@@ -32,6 +34,8 @@ namespace FConverter{
     private:
         void writeDocHeader();
         void addNewSheet(const DataElement&);
+        void addRow(const Data& data);
+        void addCell(const Value& value);
     };
 }
 #endif //FLUKACONVERTER_WRITERPOLICY_H
