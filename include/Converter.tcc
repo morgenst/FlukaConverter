@@ -26,7 +26,6 @@ namespace FConverter {
     template<typename ReadPolicy, typename WritePolicy>
     void Converter<ReadPolicy, WritePolicy>::convert() {
         read();
-        cout << "write" << endl;
         write();
     }
 
