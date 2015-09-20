@@ -20,56 +20,41 @@ namespace FConverter{
 
         for(const auto& dataElement : data)
             addNewSheet(move(dataElement));
+        m_fOutput << "</Workbook>";
         m_fOutput.close();
     }
 
     void ExcelWriterPolicy::addNewSheet(const DataElement& sheetInfo){
         m_fOutput << "<Worksheet ss:Name=\"" << sheetInfo.first->getVal() << "\">";
-        /*
-                           <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="5"
-        x:FullColumns="1" x:FullRows="1">
-                                     <Row>
-                                     <Cell>
-                                     <Data ss:Type="String">Text in cell A1</Data>
-                                                                         </Cell>
-                                                                           </Row>
-                                                                             <Row>
-                                                                             <Cell ss:StyleID="s21">
-                                                                                              <Data ss:Type="String">Bold text in A2</Data>
-                                                                                                                                  </Cell>
-                                                                                                                                    </Row>
-                                                                                                                                      <Row ss:Index="4">
-                                                                                                                                                    <Cell ss:Index="2">
-                                                                                                                                                                   <Data ss:Type="Number">43</Data>
-                                                                                                                                                                                              </Cell>
-                                                                                                                                                                                                </Row>
-                                                                                                                                                                                                  <Row>
-                                                                                                                                                                                                  <Cell ss:Index="2" ss:Formula="=R[-1]C/2">
-                                                                                                                                                                                                                                <Data ss:Type="Number">21.5</Data>
-                                                                                                                                                                                                                                                             </Cell>
-                                                                                                                                                                                                                                                               </Row>
-                                                                                                                                                                                                                                                                 </Table>
-                                                                                                                                                                                                                                                                   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-                                                                                                                                                                                                                                                                                           <Print>
-                                                                                                                                                                                                                                                                                           <ValidPrinterInfo />
-                                                                                                                                                                                                                                                                                           <HorizontalResolution>600</HorizontalResolution>
-                                                                                                                                                                                                                                                                                                                      <VerticalResolution>600</VerticalResolution>
-                                                                                                                                                                                                                                                                                                                                               </Print>
-                                                                                                                                                                                                                                                                                                                                                 <Selected />
-                                                                                                                                                                                                                                                                                                                                                 <Panes>
-                                                                                                                                                                                                                                                                                                                                                 <Pane>
-                                                                                                                                                                                                                                                                                                                                                 <Number>3</Number>
-                                                                                                                                                                                                                                                                                                                                                            <ActiveRow>5</ActiveRow>
-                                                                                                                                                                                                                                                                                                                                                                          <ActiveCol>1</ActiveCol>
-                                                                                                                                                                                                                                                                                                                                                                                        </Pane>
-                                                                                                                                                                                                                                                                                                                                                                                          </Panes>
-                                                                                                                                                                                                                                                                                                                                                                                            <Table>
-                                                                                                                                                                                                                                                                                                                                                                                            </Table>
-                                                                                                                                                                                                                                                                                                                                                                                              <ProtectObjects>False</ProtectObjects>
-                                                                                                                                                                                                                                                                                                                                                                                              <ProtectScenarios>False</ProtectScenarios>
-                                                                                                                                                                                                                                                                                                                                                                                              </WorksheetOptions>
-                                                                                                                                                                                                                                                                                                                                                                                                </Worksheet>
-*/
+        m_fOutput << "<Table ss:ExpandedColumnCount=\"2\" ss:ExpandedRowCount=\"5\" \n \
+        x:FullColumns=\"1\" x:FullRows=\"1\"> \n \
+        <Row> \n \
+        <Cell> \n";
+        m_fOutput << "<Data ss:Type=\"String\">FOOOOOO</Data>";
+        m_fOutput << "</Cell> \n \
+        </Row> \n \
+        </Table> \n \
+        <WorksheetOptions xmlns=\"urn:schemas-microsoft-com:office:excel\"> \n \
+        <Print> \n \
+        <ValidPrinterInfo /> \n \
+        <HorizontalResolution>600</HorizontalResolution> \n \
+        <VerticalResolution>600</VerticalResolution> \n \
+        </Print> \n \
+        <Selected /> \n \
+        <Panes> \n \
+        <Pane> \n \
+        <Number>3</Number> \n \
+        <ActiveRow>5</ActiveRow> \n \
+        <ActiveCol>1</ActiveCol> \n \
+        </Pane> \n \
+        </Panes> \n \
+        <Table> \n \
+        </Table> \n \
+        <ProtectObjects>False</ProtectObjects> \n \
+        <ProtectScenarios>False</ProtectScenarios> \n \
+        </WorksheetOptions> \n \
+        </Worksheet> \n";
+
     }
     void ExcelWriterPolicy::writeDocHeader() {
         m_fOutput << "<?xml version=\"1.0\"?>\n \
@@ -85,7 +70,7 @@ namespace FConverter{
         <LastAuthor>Self</LastAuthor> \n \
         <Created>2012-03-15T23:04:04Z</Created> \n \
         <Company>CERN</Company> \n \
-        \<Version>11.8036</Version> \n \
+        <Version>11.8036</Version> \n \
         </DocumentProperties> \n \
         <ExcelWorkbook xmlns=\"urn:schemas-microsoft-com:office:excel\"> \n \
         <WindowHeight>6795</WindowHeight> \n \

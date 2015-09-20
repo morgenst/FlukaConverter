@@ -66,13 +66,12 @@ namespace FConverter {
                     cerr << "Table already in parsed input" << endl;
                 m_data[headerPtr] = vector<vector<string>>{};
                 currentHeader = m_data.find(headerPtr);
-                vector<vector<string> >* foo = &m_data[headerPtr];
             }
 
             else if(element->getType() == ParsedType::row){
                 vector<string> res;
                 split(res, line, is_any_of("\t "), token_compress_on);
-                currentHeader->second.emplace_back(res);
+                currentHeader->second.emplace_back(move(res));
             }
         }
         close();
