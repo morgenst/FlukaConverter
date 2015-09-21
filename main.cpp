@@ -8,9 +8,8 @@
 using namespace std;
 namespace po = boost::program_options;
 
-//TODO: implement help
 int main(int argc, const char** argv) {
-    po::options_description parser("Help");
+    po::options_description parser("FlukaConverter converts FLUKA RESNUCLei ASCII output to Excel xml format.");
     parser.add_options()
             ("infile,i", po::value<string>(), "input file")
             ("outfile,o", po::value<string>(), "output file")
@@ -18,6 +17,10 @@ int main(int argc, const char** argv) {
             ;
     po::variables_map vm;
     po::store(po::parse_command_line(argc, argv, parser), vm);
+    if (vm.count("help")) {
+        cout << parser << "\n";
+        return 0;
+    }
     FConverter::ResnucTabExcelConverter converter(vm["infile"].as<string>(),
                                                   vm["outfile"].as<string>());
     converter.convert();
