@@ -8,6 +8,7 @@
 using namespace std;
 namespace po = boost::program_options;
 
+// TODO: implement check for input existence
 int main(int argc, const char** argv) {
     po::options_description parser("FlukaConverter converts FLUKA RESNUCLei ASCII output to Excel xml format.");
     parser.add_options()

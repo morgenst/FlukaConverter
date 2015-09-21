@@ -9,8 +9,11 @@
 #include <memory>
 
 #include "boost/algorithm/string.hpp"
-
+#include "boost/filesystem.hpp"
+#include "boost/filesystem/operations.hpp"
+#include "boost/filesystem/path.hpp"
 #include "Utils.h"
+
 using namespace std;
 using namespace boost;
 
@@ -25,15 +28,22 @@ namespace FConverter {
 
     template<typename ReadPolicy, typename WritePolicy>
     void Converter<ReadPolicy, WritePolicy>::convert() {
-        read();
+        try {
+            read();
+        }
+        catch(InvalidInput& e){
+            exit(1);
+        }
         write();
     }
 
     template <typename ReadPolicy, typename WritePolicy>
     void Converter<ReadPolicy, WritePolicy>::open() throw(InvalidInput){
+        if(!filesystem::exists(filesystem::path(m_fInput)))
+            throw InvalidInput{"Input file does not exist."};
         m_stream.open(m_fInput);
         if(!m_stream.is_open())
-            throw new InvalidInput{};
+            throw InvalidInput{};
     }
 
     template<typename ReadPolicy, typename WritePolicy>
