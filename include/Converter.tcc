@@ -54,7 +54,7 @@ namespace FConverter {
         string line;
         Data::iterator currentHeader;
         while(getline(m_stream, line)) {
-            auto element = parse(move(line));
+            auto element = parse(std::move(line));
             if(element->getType() == ParsedType::skip)
                 continue;
 
@@ -70,7 +70,7 @@ namespace FConverter {
             else if(element->getType() == ParsedType::row){
                 vector<string> res;
                 split(res, line, is_any_of("\t "), token_compress_on);
-                currentHeader->second.emplace_back(move(res));
+                currentHeader->second.emplace_back(std::move(res));
             }
         }
         close();
@@ -78,7 +78,7 @@ namespace FConverter {
 
     template<typename ReadPolicy, typename WritePolicy>
     void Converter<ReadPolicy, WritePolicy>::write() {
-        invoke(m_fOutput, move(m_data));
+        invoke(m_fOutput, std::move(m_data));
     }
 }
 #endif //FLUKACONVERTER_CONVERTER_TCC
