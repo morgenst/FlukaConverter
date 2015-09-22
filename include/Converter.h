@@ -25,7 +25,11 @@ namespace FConverter{
         Converter() = delete;
         Converter(const std::string& fInput, const std::string& fOutput);
         constexpr Converter(const Converter&) = delete;
+		#ifdef _MSC_VER
+		Converter& operator=(const Converter&) = delete;
+		#else
         constexpr Converter& operator=(const Converter&) = delete;
+		#endif
         ~Converter();
 
         void convert();

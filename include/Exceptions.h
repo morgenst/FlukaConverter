@@ -2,6 +2,12 @@
 // Created by morgenst on 17/09/15.
 //
 
+#ifndef _MSC_VER
+#define noexcept noexcept
+#else
+#define noexcept
+#endif
+
 #ifndef FLUKACONVERTER_EXCEPTIONS_H
 #define FLUKACONVERTER_EXCEPTIONS_H
 
