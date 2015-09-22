@@ -5,6 +5,7 @@
 #ifndef FLUKACONVERTER_READER_H
 #define FLUKACONVERTER_READER_H
 
+#include <memory>
 #include <string>
 #include <regex>
 #include "ParsedElement.h"
