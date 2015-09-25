@@ -16,9 +16,14 @@
 namespace FConverter{
     class InvalidInput : public std::exception{
     public:
+        InvalidInput() : m_message("Invalid input"){}
+        InvalidInput(const std::string& message) : m_message(message) {}
         virtual const char* what() const noexcept {
-            return "Invalid input";
+            return m_message.c_str();
         }
+
+    private:
+        std::string m_message;
     };
 }
 #endif //FLUKACONVERTER_EXCEPTIONS_H

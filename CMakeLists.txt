@@ -7,7 +7,7 @@ if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
         message(FATAL_ERROR "GCC version must be at least 4.8!")
     endif()
 elseif ("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
-    # require at least clang 3.2
+    # require at least clang 3.3
     if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 3.3)
         message(FATAL_ERROR "Clang version must be at least 3.9!")
     endif()
@@ -22,4 +22,4 @@ set(SOURCE_FILES main.cpp include/Converter.h include/ParsedElement.h include/Re
 include_directories(include $ENV{BOOST_INC_DIR})
 link_directories($ENV{BOOST_LIB_DIR})
 add_executable(FlukaConverter ${SOURCE_FILES})
-target_link_libraries(FlukaConverter stdc++ boost_program_options)
+target_link_libraries(FlukaConverter stdc++ boost_system boost_filesystem boost_program_options)
