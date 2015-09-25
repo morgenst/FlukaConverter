@@ -1,0 +1,57 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ALL_BUILD", "ALL_BUILD.vcxproj", "{C8C70762-EDD8-4679-A0E3-7E5AE7870163}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2621FC80-B0BF-486D-BBAC-24F384B0777D} = {2621FC80-B0BF-486D-BBAC-24F384B0777D}
+		{1AB9525D-C807-49A2-9D3D-841F7C909374} = {1AB9525D-C807-49A2-9D3D-841F7C909374}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FlukaConverter", "FlukaConverter.vcxproj", "{2621FC80-B0BF-486D-BBAC-24F384B0777D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1AB9525D-C807-49A2-9D3D-841F7C909374} = {1AB9525D-C807-49A2-9D3D-841F7C909374}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZERO_CHECK", "ZERO_CHECK.vcxproj", "{1AB9525D-C807-49A2-9D3D-841F7C909374}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupClient", "SetupClient\SetupClient.vdproj", "{3D4A475D-F0C1-41D3-B5BF-9B731598AD86}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		MinSizeRel|Win32 = MinSizeRel|Win32
+		Release|Win32 = Release|Win32
+		RelWithDebInfo|Win32 = RelWithDebInfo|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8C70762-EDD8-4679-A0E3-7E5AE7870163}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C8C70762-EDD8-4679-A0E3-7E5AE7870163}.MinSizeRel|Win32.ActiveCfg = MinSizeRel|Win32
+		{C8C70762-EDD8-4679-A0E3-7E5AE7870163}.Release|Win32.ActiveCfg = Release|Win32
+		{C8C70762-EDD8-4679-A0E3-7E5AE7870163}.RelWithDebInfo|Win32.ActiveCfg = RelWithDebInfo|Win32
+		{2621FC80-B0BF-486D-BBAC-24F384B0777D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2621FC80-B0BF-486D-BBAC-24F384B0777D}.Debug|Win32.Build.0 = Debug|Win32
+		{2621FC80-B0BF-486D-BBAC-24F384B0777D}.MinSizeRel|Win32.ActiveCfg = MinSizeRel|Win32
+		{2621FC80-B0BF-486D-BBAC-24F384B0777D}.MinSizeRel|Win32.Build.0 = MinSizeRel|Win32
+		{2621FC80-B0BF-486D-BBAC-24F384B0777D}.Release|Win32.ActiveCfg = Release|Win32
+		{2621FC80-B0BF-486D-BBAC-24F384B0777D}.Release|Win32.Build.0 = Release|Win32
+		{2621FC80-B0BF-486D-BBAC-24F384B0777D}.RelWithDebInfo|Win32.ActiveCfg = RelWithDebInfo|Win32
+		{2621FC80-B0BF-486D-BBAC-24F384B0777D}.RelWithDebInfo|Win32.Build.0 = RelWithDebInfo|Win32
+		{1AB9525D-C807-49A2-9D3D-841F7C909374}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1AB9525D-C807-49A2-9D3D-841F7C909374}.Debug|Win32.Build.0 = Debug|Win32
+		{1AB9525D-C807-49A2-9D3D-841F7C909374}.MinSizeRel|Win32.ActiveCfg = MinSizeRel|Win32
+		{1AB9525D-C807-49A2-9D3D-841F7C909374}.MinSizeRel|Win32.Build.0 = MinSizeRel|Win32
+		{1AB9525D-C807-49A2-9D3D-841F7C909374}.Release|Win32.ActiveCfg = Release|Win32
+		{1AB9525D-C807-49A2-9D3D-841F7C909374}.Release|Win32.Build.0 = Release|Win32
+		{1AB9525D-C807-49A2-9D3D-841F7C909374}.Release|Win32.Deploy.0 = Release|Win32
+		{1AB9525D-C807-49A2-9D3D-841F7C909374}.RelWithDebInfo|Win32.ActiveCfg = RelWithDebInfo|Win32
+		{1AB9525D-C807-49A2-9D3D-841F7C909374}.RelWithDebInfo|Win32.Build.0 = RelWithDebInfo|Win32
+		{3D4A475D-F0C1-41D3-B5BF-9B731598AD86}.Debug|Win32.ActiveCfg = Debug
+		{3D4A475D-F0C1-41D3-B5BF-9B731598AD86}.MinSizeRel|Win32.ActiveCfg = Release
+		{3D4A475D-F0C1-41D3-B5BF-9B731598AD86}.Release|Win32.ActiveCfg = Release
+		{3D4A475D-F0C1-41D3-B5BF-9B731598AD86}.RelWithDebInfo|Win32.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
