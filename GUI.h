@@ -230,9 +230,9 @@ namespace FlukaConverter {
 	private: System::Void btnOpenOutFile_Click(System::Object^  sender, System::EventArgs^  e) {
 				 SaveFileDialog ^ saveFileDialog = gcnew SaveFileDialog();
 				 saveFileDialog->AddExtension = "xml";
-				 saveFileDialog->OverwritePrompt = true;
-				 saveFileDialog->CheckFileExists = true;
-				 saveFileDialog->CreatePrompt = true;
+				 saveFileDialog->OverwritePrompt = false;
+				 saveFileDialog->CheckFileExists = false;
+				 saveFileDialog->CreatePrompt = false;
 				 saveFileDialog->ShowHelp = true;
 				 if (saveFileDialog->ShowDialog() == System::Windows::Forms::DialogResult::OK){
 					 fOutput = saveFileDialog->FileName;

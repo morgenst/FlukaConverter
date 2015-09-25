@@ -15,7 +15,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FlukaConverter", "FlukaConv
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZERO_CHECK", "ZERO_CHECK.vcxproj", "{1AB9525D-C807-49A2-9D3D-841F7C909374}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupClient", "SetupClient\SetupClient.vdproj", "{7EA45356-96E9-4B4C-8F1A-660BA8C524A4}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupClient", "SetupClient\SetupClient.vdproj", "{732919D1-ED3D-4A5C-98E3-016BEA6FF97F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,14 +45,10 @@ Global
 		{1AB9525D-C807-49A2-9D3D-841F7C909374}.Release|Win32.Build.0 = Release|Win32
 		{1AB9525D-C807-49A2-9D3D-841F7C909374}.RelWithDebInfo|Win32.ActiveCfg = RelWithDebInfo|Win32
 		{1AB9525D-C807-49A2-9D3D-841F7C909374}.RelWithDebInfo|Win32.Build.0 = RelWithDebInfo|Win32
-		{7EA45356-96E9-4B4C-8F1A-660BA8C524A4}.Debug|Win32.ActiveCfg = Debug
-		{7EA45356-96E9-4B4C-8F1A-660BA8C524A4}.Debug|Win32.Build.0 = Debug
-		{7EA45356-96E9-4B4C-8F1A-660BA8C524A4}.MinSizeRel|Win32.ActiveCfg = Release
-		{7EA45356-96E9-4B4C-8F1A-660BA8C524A4}.MinSizeRel|Win32.Build.0 = Release
-		{7EA45356-96E9-4B4C-8F1A-660BA8C524A4}.Release|Win32.ActiveCfg = Release
-		{7EA45356-96E9-4B4C-8F1A-660BA8C524A4}.Release|Win32.Build.0 = Release
-		{7EA45356-96E9-4B4C-8F1A-660BA8C524A4}.RelWithDebInfo|Win32.ActiveCfg = Release
-		{7EA45356-96E9-4B4C-8F1A-660BA8C524A4}.RelWithDebInfo|Win32.Build.0 = Release
+		{732919D1-ED3D-4A5C-98E3-016BEA6FF97F}.Debug|Win32.ActiveCfg = Debug
+		{732919D1-ED3D-4A5C-98E3-016BEA6FF97F}.MinSizeRel|Win32.ActiveCfg = Release
+		{732919D1-ED3D-4A5C-98E3-016BEA6FF97F}.Release|Win32.ActiveCfg = Release
+		{732919D1-ED3D-4A5C-98E3-016BEA6FF97F}.RelWithDebInfo|Win32.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
