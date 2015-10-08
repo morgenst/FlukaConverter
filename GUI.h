@@ -220,6 +220,7 @@ namespace FlukaConverter {
 	}
 	private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs^  e) {
 				 OpenFileDialog ^ openFileDialog1 = gcnew OpenFileDialog();
+				 openFileDialog1->Filter = "Resnuclei tab lis|*tab.lis";
 				 openFileDialog1->ShowHelp = true;
 				 if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK){
 					 fInput = openFileDialog1->FileName;
