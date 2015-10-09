@@ -10,11 +10,17 @@ A tool for conversion of ASCII output from Fluka to Excel, LaTeX, etc.
 
 ## Installation
 
+### Linux
+
 Checkout from git, run cmake . and enter (g)make. *Note:* In order to find the boost libraries provide $BOOST_INC_DIR and $BOOST_LIB_DIR environment variables, i.e.
 
 export $BOOST_INC_DIR=path_to_boost/include/
 
 export $BOOST_LIB_DIR=path_to_boost/lib/
+
+### Windows
+
+Download the msi Installer and simply execute it.
 
 ## Features (Version 1.0)
 
