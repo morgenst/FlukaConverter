@@ -3,6 +3,7 @@
 #include <iostream>
 #include <msclr\marshal_cppstd.h>
 #include "MyForm.h"
+#include "HelpForm.h"
 #include "PredefinedConverters.h"
 using namespace std;
 namespace FlukaConverter {
@@ -52,6 +53,8 @@ namespace FlukaConverter {
 	private: System::Windows::Forms::MenuStrip^  menuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^  flukaConverterToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  closeToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  toolStripMenuItem1;
+	private: System::Windows::Forms::ToolStripMenuItem^  aboutFlukaConverterToolStripMenuItem;
 
 
 
@@ -84,12 +87,14 @@ namespace FlukaConverter {
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->flukaConverterToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->closeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->aboutFlukaConverterToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// ConvertButton
 			// 
-			this->ConvertButton->Location = System::Drawing::Point(340, 201);
+			this->ConvertButton->Location = System::Drawing::Point(468, 194);
 			this->ConvertButton->Name = L"ConvertButton";
 			this->ConvertButton->Size = System::Drawing::Size(75, 23);
 			this->ConvertButton->TabIndex = 1;
@@ -104,7 +109,7 @@ namespace FlukaConverter {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(340, 46);
+			this->button2->Location = System::Drawing::Point(468, 46);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 23);
 			this->button2->TabIndex = 2;
@@ -115,7 +120,7 @@ namespace FlukaConverter {
 			// lblInput
 			// 
 			this->lblInput->AutoSize = true;
-			this->lblInput->Location = System::Drawing::Point(133, 56);
+			this->lblInput->Location = System::Drawing::Point(133, 51);
 			this->lblInput->Name = L"lblInput";
 			this->lblInput->Size = System::Drawing::Size(0, 13);
 			this->lblInput->TabIndex = 3;
@@ -123,6 +128,7 @@ namespace FlukaConverter {
 			// label1
 			// 
 			this->label1->AutoSize = true;
+			this->label1->BackColor = System::Drawing::SystemColors::ControlLight;
 			this->label1->Location = System::Drawing::Point(48, 51);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(44, 13);
@@ -132,6 +138,7 @@ namespace FlukaConverter {
 			// label2
 			// 
 			this->label2->AutoSize = true;
+			this->label2->BackColor = System::Drawing::SystemColors::ControlLight;
 			this->label2->Location = System::Drawing::Point(48, 110);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(52, 13);
@@ -148,7 +155,7 @@ namespace FlukaConverter {
 			// 
 			// btnOpenOutFile
 			// 
-			this->btnOpenOutFile->Location = System::Drawing::Point(340, 110);
+			this->btnOpenOutFile->Location = System::Drawing::Point(468, 105);
 			this->btnOpenOutFile->Name = L"btnOpenOutFile";
 			this->btnOpenOutFile->Size = System::Drawing::Size(75, 23);
 			this->btnOpenOutFile->TabIndex = 7;
@@ -158,7 +165,11 @@ namespace FlukaConverter {
 			// 
 			// menuStrip1
 			// 
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->flukaConverterToolStripMenuItem });
+			this->menuStrip1->BackColor = System::Drawing::SystemColors::Control;
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->flukaConverterToolStripMenuItem,
+					this->toolStripMenuItem1
+			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Size = System::Drawing::Size(606, 24);
@@ -167,6 +178,7 @@ namespace FlukaConverter {
 			// 
 			// flukaConverterToolStripMenuItem
 			// 
+			this->flukaConverterToolStripMenuItem->BackColor = System::Drawing::SystemColors::ControlLight;
 			this->flukaConverterToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->closeToolStripMenuItem });
 			this->flukaConverterToolStripMenuItem->Name = L"flukaConverterToolStripMenuItem";
 			this->flukaConverterToolStripMenuItem->Size = System::Drawing::Size(99, 20);
@@ -175,9 +187,24 @@ namespace FlukaConverter {
 			// closeToolStripMenuItem
 			// 
 			this->closeToolStripMenuItem->Name = L"closeToolStripMenuItem";
-			this->closeToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->closeToolStripMenuItem->Size = System::Drawing::Size(103, 22);
 			this->closeToolStripMenuItem->Text = L"Close";
 			this->closeToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::closeToolStripMenuItem_Click);
+			// 
+			// toolStripMenuItem1
+			// 
+			this->toolStripMenuItem1->BackColor = System::Drawing::SystemColors::ControlLight;
+			this->toolStripMenuItem1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->aboutFlukaConverterToolStripMenuItem });
+			this->toolStripMenuItem1->Name = L"toolStripMenuItem1";
+			this->toolStripMenuItem1->Size = System::Drawing::Size(44, 20);
+			this->toolStripMenuItem1->Text = L"Help";
+			// 
+			// aboutFlukaConverterToolStripMenuItem
+			// 
+			this->aboutFlukaConverterToolStripMenuItem->Name = L"aboutFlukaConverterToolStripMenuItem";
+			this->aboutFlukaConverterToolStripMenuItem->Size = System::Drawing::Size(190, 22);
+			this->aboutFlukaConverterToolStripMenuItem->Text = L"About FlukaConverter";
+			this->aboutFlukaConverterToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::aboutFlukaConverterToolStripMenuItem_Click);
 			// 
 			// MyForm
 			// 
@@ -195,6 +222,7 @@ namespace FlukaConverter {
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"MyForm";
 			this->Text = L"FlukaConverter";
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);
@@ -243,5 +271,12 @@ namespace FlukaConverter {
 	private: System::Void closeToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 				 exit(0);
 	}
+private: System::Void aboutFlukaConverterToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 HelpForm^ help= gcnew HelpForm;
+			 help->Show();
+
+}
+private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
+}
 };
 }
