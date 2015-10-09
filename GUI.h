@@ -258,6 +258,7 @@ namespace FlukaConverter {
 
 	private: System::Void btnOpenOutFile_Click(System::Object^  sender, System::EventArgs^  e) {
 				 SaveFileDialog ^ saveFileDialog = gcnew SaveFileDialog();
+				 saveFileDialog->Filter = "Excel xml|*.xml";
 				 saveFileDialog->AddExtension = "xml";
 				 saveFileDialog->OverwritePrompt = false;
 				 saveFileDialog->CheckFileExists = false;
