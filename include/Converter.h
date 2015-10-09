@@ -5,6 +5,10 @@
 #ifndef FLUKACONVERTER_CONVERTER_H
 #define FLUKACONVERTER_CONVERTER_H
 
+#ifdef _MSC_VER
+#pragma warning( disable : 4290 )
+#endif
+
 #include <fstream>
 #include <map>
 #include <memory>

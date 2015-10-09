@@ -31,7 +31,7 @@ namespace FConverter {
         try {
             read();
         }
-        catch(InvalidInput& e){
+        catch(InvalidInput&){
             exit(1);
         }
         write();
