@@ -6,7 +6,7 @@
 #include "PredefinedConverters.h"
 #include "boost/program_options.hpp"
 #ifdef _MSC_VER
-#include "GUI.h"
+#include "MainFrame.h"
 #endif
 using namespace std;
 namespace po = boost::program_options;
@@ -35,7 +35,7 @@ int main(int argc, const char** argv) {
 #else
 int _tmain(int argc, char* argv[])
 {
-	FlukaConverter::MyForm form;
+	FlukaConverter::MainFrame form;
 	form.ShowDialog();
 	return 0;
 }

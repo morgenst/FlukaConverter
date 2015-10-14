@@ -324,7 +324,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="gui/GUI.cpp" />
+    <ClCompile Include="gui\MainFrame.cpp" />
     <ClCompile Include="gui/HelpForm.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -341,7 +341,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <DebugInformationFormat Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Async</ExceptionHandling>
     </ClCompile>
-    <ClCompile Include="gui/MyForm.cpp" />
+    <ClCompile Include="gui\SuccessFrame.cpp" />
     <ClInclude Include="D:\FlukaConverter\include\Converter.h" />
     <ClInclude Include="D:\FlukaConverter\include\ParsedElement.h" />
     <ClInclude Include="D:\FlukaConverter\include\ReaderPolicy.h" />
@@ -352,23 +352,27 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\FlukaConverter\main.cpp" />
     <ClCompile Include="D:\FlukaConverter\src\ReaderPolicy.cpp" />
     <ClCompile Include="D:\FlukaConverter\src\WriterPolicy.cpp" />
-    <ClInclude Include="gui/GUI.h">
+    <ClInclude Include="gui\MainFrame.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="gui/HelpForm.h">
+    <ClInclude Include="gui\HelpFrame.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="gui/MyForm.h" />
+    <ClInclude Include="gui\SuccessFrame.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <None Include="D:\FlukaConverter\include\Converter.tcc" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="gui/GUI.resx">
+    <EmbeddedResource Include="gui\MainFrame.resx">
       <DependentUpon>GUI.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="gui/HelpForm.resx">
+    <EmbeddedResource Include="gui\HelpFrame.resx">
       <DependentUpon>HelpForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="gui/MyForm.resx" />
+    <EmbeddedResource Include="gui\SuccessFrame.resx">
+      <DependentUpon>gui\SuccessFrame.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

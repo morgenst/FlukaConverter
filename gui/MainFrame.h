@@ -2,9 +2,10 @@
 
 #include <iostream>
 #include <msclr\marshal_cppstd.h>
-#include "MyForm.h"
-#include "HelpForm.h"
+#include "SuccessFrame.h"
+#include "HelpFrame.h"
 #include "PredefinedConverters.h"
+
 using namespace std;
 namespace FlukaConverter {
 
@@ -16,12 +17,12 @@ namespace FlukaConverter {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for MyForm
+	/// Summary for MainFrame
 	/// </summary>
-	public ref class MyForm : public System::Windows::Forms::Form
+	public ref class MainFrame : public System::Windows::Forms::Form
 	{
 	public:
-		MyForm(void)
+		MainFrame(void)
 		{
 			InitializeComponent();
 			//
@@ -33,7 +34,7 @@ namespace FlukaConverter {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~MyForm()
+		~MainFrame()
 		{
 			if (components)
 			{
@@ -100,7 +101,7 @@ namespace FlukaConverter {
 			this->ConvertButton->TabIndex = 1;
 			this->ConvertButton->Text = L"convert";
 			this->ConvertButton->UseVisualStyleBackColor = true;
-			this->ConvertButton->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			this->ConvertButton->Click += gcnew System::EventHandler(this, &MainFrame::button1_Click);
 			// 
 			// openFileDialog1
 			// 
@@ -115,7 +116,7 @@ namespace FlukaConverter {
 			this->button2->TabIndex = 2;
 			this->button2->Text = L"Open";
 			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button1_Click_1);
+			this->button2->Click += gcnew System::EventHandler(this, &MainFrame::button1_Click_1);
 			// 
 			// lblInput
 			// 
@@ -161,7 +162,7 @@ namespace FlukaConverter {
 			this->btnOpenOutFile->TabIndex = 7;
 			this->btnOpenOutFile->Text = L"Open";
 			this->btnOpenOutFile->UseVisualStyleBackColor = true;
-			this->btnOpenOutFile->Click += gcnew System::EventHandler(this, &MyForm::btnOpenOutFile_Click);
+			this->btnOpenOutFile->Click += gcnew System::EventHandler(this, &MainFrame::btnOpenOutFile_Click);
 			// 
 			// menuStrip1
 			// 
@@ -189,7 +190,7 @@ namespace FlukaConverter {
 			this->closeToolStripMenuItem->Name = L"closeToolStripMenuItem";
 			this->closeToolStripMenuItem->Size = System::Drawing::Size(103, 22);
 			this->closeToolStripMenuItem->Text = L"Close";
-			this->closeToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::closeToolStripMenuItem_Click);
+			this->closeToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainFrame::closeToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem1
 			// 
@@ -204,9 +205,9 @@ namespace FlukaConverter {
 			this->aboutFlukaConverterToolStripMenuItem->Name = L"aboutFlukaConverterToolStripMenuItem";
 			this->aboutFlukaConverterToolStripMenuItem->Size = System::Drawing::Size(190, 22);
 			this->aboutFlukaConverterToolStripMenuItem->Text = L"About FlukaConverter";
-			this->aboutFlukaConverterToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::aboutFlukaConverterToolStripMenuItem_Click);
+			this->aboutFlukaConverterToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainFrame::aboutFlukaConverterToolStripMenuItem_Click);
 			// 
-			// MyForm
+			// MainFrame
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -220,9 +221,9 @@ namespace FlukaConverter {
 			this->Controls->Add(this->ConvertButton);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
-			this->Name = L"MyForm";
+			this->Name = L"MainFrame";
 			this->Text = L"FlukaConverter";
-			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
+			this->Load += gcnew System::EventHandler(this, &MainFrame::MyForm_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);
@@ -240,7 +241,7 @@ namespace FlukaConverter {
 				 FConverter::ResnucTabExcelConverter converter(msclr::interop::marshal_as<std::string>(fInput->ToString()),
 					 msclr::interop::marshal_as<std::string>(fOutput->ToString()));
 				 converter.convert();
-				 MyForm1^ formSuccess = gcnew MyForm1;
+				 SuccessFrame^ formSuccess = gcnew SuccessFrame;
 				 formSuccess->Show();
 	}
 
@@ -273,7 +274,7 @@ namespace FlukaConverter {
 				 exit(0);
 	}
 private: System::Void aboutFlukaConverterToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			 HelpForm^ help= gcnew HelpForm;
+			 HelpFrame^ help= gcnew HelpFrame;
 			 help->Show();
 
 }

@@ -10,12 +10,12 @@ namespace FlukaConverter {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for MyForm1
+	/// Summary for HelpFrame
 	/// </summary>
-	public ref class MyForm1 : public System::Windows::Forms::Form
+	public ref class HelpFrame : public System::Windows::Forms::Form
 	{
 	public:
-		MyForm1(void)
+		HelpFrame(void)
 		{
 			InitializeComponent();
 			//
@@ -27,7 +27,7 @@ namespace FlukaConverter {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~MyForm1()
+		~HelpFrame()
 		{
 			if (components)
 			{
@@ -35,7 +35,8 @@ namespace FlukaConverter {
 			}
 		}
 	private: System::Windows::Forms::Label^  label1;
-	private: System::Windows::Forms::Button^  button1;
+	protected:
+
 	protected:
 
 	private:
@@ -52,48 +53,29 @@ namespace FlukaConverter {
 		void InitializeComponent(void)
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Bold));
-			this->label1->Location = System::Drawing::Point(32, 85);
+			this->label1->Location = System::Drawing::Point(70, 84);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(240, 25);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Conversion Successful.";
-			this->label1->Click += gcnew System::EventHandler(this, &MyForm1::label1_Click);
+			this->label1->Size = System::Drawing::Size(135, 13);
+			this->label1->TabIndex = 1;
+			this->label1->Text = L"FlukaConverter Version 1.1";
 			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(101, 144);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(78, 44);
-			this->button1->TabIndex = 1;
-			this->button1->Text = L"Ok";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm1::button1_Click);
-			// 
-			// MyForm1
+			// HelpFrame
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(284, 262);
-			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label1);
-			this->Name = L"MyForm1";
-			this->Text = L"Success";
+			this->Name = L"HelpFrame";
+			this->Text = L"HelpFrame";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
-	}
-	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-				 this->Close();
-	}
 	};
 }
