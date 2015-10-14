@@ -133,7 +133,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <AdditionalOptions> -std=c++1y %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>D:\boost_1_59_0;D:\FlukaConverter\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\boost_1_59_0;D:\FlukaConverter\gui;D:\FlukaConverter\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Release/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <ExceptionHandling>Async</ExceptionHandling>
@@ -324,8 +324,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GUI.cpp" />
-    <ClCompile Include="HelpForm.cpp">
+    <ClCompile Include="gui/GUI.cpp" />
+    <ClCompile Include="gui/HelpForm.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
@@ -341,7 +341,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <DebugInformationFormat Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Async</ExceptionHandling>
     </ClCompile>
-    <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="gui/MyForm.cpp" />
     <ClInclude Include="D:\FlukaConverter\include\Converter.h" />
     <ClInclude Include="D:\FlukaConverter\include\ParsedElement.h" />
     <ClInclude Include="D:\FlukaConverter\include\ReaderPolicy.h" />
@@ -352,23 +352,23 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\FlukaConverter\main.cpp" />
     <ClCompile Include="D:\FlukaConverter\src\ReaderPolicy.cpp" />
     <ClCompile Include="D:\FlukaConverter\src\WriterPolicy.cpp" />
-    <ClInclude Include="GUI.h">
+    <ClInclude Include="gui/GUI.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="HelpForm.h">
+    <ClInclude Include="gui/HelpForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="MyForm.h" />
+    <ClInclude Include="gui/MyForm.h" />
     <None Include="D:\FlukaConverter\include\Converter.tcc" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="GUI.resx">
+    <EmbeddedResource Include="gui/GUI.resx">
       <DependentUpon>GUI.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HelpForm.resx">
+    <EmbeddedResource Include="gui/HelpForm.resx">
       <DependentUpon>HelpForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyForm.resx" />
+    <EmbeddedResource Include="gui/MyForm.resx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
