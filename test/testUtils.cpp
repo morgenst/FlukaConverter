@@ -12,8 +12,10 @@
 using namespace boost::unit_test;
 using namespace Utils;
 
+using dataVec = std::vector<std::vector<float>>;
+
 BOOST_AUTO_TEST_CASE( test_getMaxSize ){
-    auto testVec = std::vector<std::vector<float>>{};
+    auto testVec = dataVec{};
     auto iTmp = 0;
     auto targetSize = 10;
     while(iTmp <= targetSize) {
@@ -24,6 +26,6 @@ BOOST_AUTO_TEST_CASE( test_getMaxSize ){
 }
 
 BOOST_AUTO_TEST_CASE( test_getMaxSize_empty){
-    auto testVec = std::vector<std::vector<float>>{};
+    auto testVec = dataVec{};
     BOOST_TEST(getMaxSize(&testVec) == 0);
 }
