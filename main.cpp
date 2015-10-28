@@ -5,19 +5,19 @@
 
 #include "PredefinedConverters.h"
 #include "boost/program_options.hpp"
+
 #ifdef _MSC_VER
 #include "MainFrame.h"
 #endif
 using namespace std;
 namespace po = boost::program_options;
 
-//TODO: implement help
 #ifndef _MSC_VER
 int main(int argc, const char** argv) {
     po::options_description parser("FlukaConverter converts FLUKA RESNUCLei ASCII output to Excel xml format.");
     parser.add_options()
-            ("infile,i", po::value<string>(), "input file")
-            ("outfile,o", po::value<string>(), "output file")
+            ("infile,i", po::value<string>()->required(), "input file")
+            ("outfile,o", po::value<string>()->required(), "output file")
             ("help,h", "print help message")
             ;
     po::variables_map vm;

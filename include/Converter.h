@@ -12,6 +12,7 @@
 #include <fstream>
 #include <map>
 #include <memory>
+#include <queue>
 #include <string>
 #include <vector>
 #include "Exceptions.h"
@@ -20,6 +21,9 @@
 namespace FConverter{
     template <typename ReadPolicy, typename WritePolicy>
     class Converter : private ReadPolicy, private WritePolicy{
+        using SingleParsedElement = std::queue<std::shared_ptr<ParsedElement>>;
+        using ParsedElements = std::shared_ptr<SingleParsedElement>;
+        using ParsedData = std::map<std::shared_ptr<HeaderElement>, ParsedElements>;
         using DataElement = std::pair<std::shared_ptr<HeaderElement>, std::vector<std::vector<std::string>>>;
         using Data = std::map<std::shared_ptr<HeaderElement>, std::vector<std::vector<std::string>>>;
         using ReadPolicy::parse;
@@ -42,6 +46,7 @@ namespace FConverter{
         void close() noexcept ;
         void read() throw(InvalidInput);
         void write();
+        void transform(ParsedData&&);
         std::string m_fInput;
         std::string m_fOutput;
         Data m_data;

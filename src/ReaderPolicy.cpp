@@ -11,11 +11,24 @@
 namespace FConverter{
     using namespace std;
     using namespace boost;
-    shared_ptr <ParsedElement> ResnucTabReaderPolicy::parse(string&& line) {
-        if(starts_with(line, "#"))
-            return std::move(shared_ptr<SkipElement>(new SkipElement));
-        if(regex_match(line, m_reRow))
-            return std::move(shared_ptr<RowElement>(new RowElement(move(line))));
-        return std::move(shared_ptr<HeaderElement>(new HeaderElement(move(line))));
+    ParsedData ResnucTabReaderPolicy::parse(unique_ptr<FileContent>&& fileContent) {
+        auto parsedData = ParsedData{};
+        auto currentDetector = parsedData.begin();
+        while(!fileContent->empty()) {
+            auto line = fileContent->front();
+            fileContent->pop();
+            if (starts_with(line, "#"))
+                continue;
+            else if (regex_match(line, m_reRow)) {
+                currentDetector->second->push(std::move(make_shared<RowElement>(std::move(line))));
+                continue;
+            }
+            currentDetector = (parsedData.emplace(make_shared<HeaderElement>(std::move(line)), make_shared<SingleParsedElement>())).first;
+        }
+        return std::move(parsedData);
+    }
+
+    ParsedData ResnucSumReaderPolicy::parse(unique_ptr<FileContent>&& fileContent){
+        
     }
 }

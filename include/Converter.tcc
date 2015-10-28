@@ -6,7 +6,10 @@
 #define FLUKACONVERTER_CONVERTER_TCC
 
 #include <iostream>
+#include <queue>
 #include <memory>
+#include <sstream>
+#include <utility>
 
 #include "boost/algorithm/string.hpp"
 #include "boost/filesystem.hpp"
@@ -52,6 +55,24 @@ namespace FConverter {
             m_stream.close();
     }
 
+    template <typename ReadPolicy, typename WritePolicy>
+    void Converter<ReadPolicy, WritePolicy>::transform(ParsedData&& parsedData){
+        Data::iterator currentHeader;
+        for(auto parsedDetector : parsedData){
+            auto headerPtr = parsedDetector.first;
+            m_data[headerPtr] = vector<vector<string>>{};
+            currentHeader = m_data.find(headerPtr);
+            auto parsedElements = parsedDetector.second;
+            while(!parsedElements->empty()){
+                vector<string> res;
+                auto tmp = parsedElements->front()->getVal();
+                split(res, tmp, is_any_of("\t "), token_compress_on);
+                currentHeader->second.emplace_back(std::move(res));
+                parsedElements->pop();
+            }
+        }
+    }
+
     template<typename ReadPolicy, typename WritePolicy>
     void Converter<ReadPolicy, WritePolicy>::read() throw(InvalidInput) {
         try {
@@ -61,28 +82,11 @@ namespace FConverter {
             cerr << e.what() << endl;
             throw e;
         }
-        string line;
-        Data::iterator currentHeader;
-        while(getline(m_stream, line)) {
-            auto element = parse(std::move(line));
-            if(element->getType() == ParsedType::skip)
-                continue;
-
-            else if (element->getType() == ParsedType::header) {
-                auto headerPtr = dynamic_pointer_cast<HeaderElement>(element);
-                currentHeader = m_data.find(headerPtr);
-                if (currentHeader != m_data.end())
-                    cerr << "Table already in parsed input" << endl;
-                m_data[headerPtr] = vector<vector<string>>{};
-                currentHeader = m_data.find(headerPtr);
-            }
-
-            else if(element->getType() == ParsedType::row){
-                vector<string> res;
-                split(res, line, is_any_of("\t "), token_compress_on);
-                currentHeader->second.emplace_back(std::move(res));
-            }
-        }
+        auto fileContent = make_unique<queue<string>>();
+        string tmpLine;
+        while(getline(m_stream, tmpLine))
+            fileContent->push(tmpLine);
+        transform(parse(std::move(fileContent)));
         close();
     }
 
