@@ -5,6 +5,7 @@
 #ifndef FLUKACONVERTER_READER_H
 #define FLUKACONVERTER_READER_H
 
+#include <forward_list>
 #include <map>
 #include <memory>
 #include <queue>
@@ -39,6 +40,16 @@ namespace FConverter {
     public:
         ResnucSumReaderPolicy() : ReaderPolicy(""){}
         ParsedData parse(std::unique_ptr<FileContent>&&) override;
+
+    private:
+        void readZ(std::string&& );
+        void parseA(std::string&& );
+        void parseUncertainty(std::string&&);
+        std::string m_iCurrentA;
+        std::forward_list<std::string> m_lZ;
+        std::forward_list<std::string> m_lAct;
+        std::forward_list<std::string> m_lUncertainty;
+
     };
 }
 #endif //FLUKACONVERTER_READER_H

@@ -28,5 +28,14 @@ namespace Utils{
         std::transform(vec->begin(), vec->end(), vecTmp.begin(), std::mem_fun_ref(&std::vector<VecType>::size));
         return *(std::max_element(vecTmp.begin(), vecTmp.end()));
     }
+
+    /*
+    template<class T>
+    decltype(auto) range(T end){
+        static_assert(std::is_integral<T>::value,
+                      "range only accepts integral values");
+        return {static_cast<T>(0), end};
+    }
+     */
 }
 #endif //FLUKACONVERTER_UTILS_H

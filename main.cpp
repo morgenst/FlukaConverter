@@ -1,10 +1,6 @@
 #include <iostream>
-#include <string>
-#include <PredefinedConverters.h>
-//#include <tchar.h>
-
-#include "PredefinedConverters.h"
 #include "boost/program_options.hpp"
+#include "PredefinedConverters.h"
 
 #ifdef _MSC_VER
 #include "MainFrame.h"
@@ -26,9 +22,19 @@ int main(int argc, const char** argv) {
         cout << parser << "\n";
         return 0;
     }
-    FConverter::ResnucTabExcelConverter converter(vm["infile"].as<string>(),
-                                                  vm["outfile"].as<string>());
-    converter.convert();
+    auto fInput = vm["infile"].as<string>();
+    if(boost::ends_with(fInput, "_tab.lis")) {
+        FConverter::ResnucTabExcelConverter converter(fInput,
+                                                      vm["outfile"].as<string>());
+        converter.convert();
+    }
+    else if(boost::ends_with(fInput, "_sum.lis")) {
+        FConverter::ResnucSumExcelConverter converter(fInput,
+                                                      vm["outfile"].as<string>());
+        converter.convert();
+    }
+    else
+        cerr << "Unable to find predefined converter" << endl;
 
     return 0;
 }

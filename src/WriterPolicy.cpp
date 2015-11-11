@@ -26,8 +26,8 @@ namespace FConverter{
     }
 
     void ExcelWriterPolicy::addCell(const Value& value){
-        m_fOutput << "<Cell> \n";
-        m_fOutput << "<Data ss:Type=\"String\">" << value << "</Data>\n ";
+        m_fOutput << "<Cell> ";
+        m_fOutput << "<Data ss:Type=\"String\">" << value << "</Data> ";
         m_fOutput << "</Cell> \n";
     }
 

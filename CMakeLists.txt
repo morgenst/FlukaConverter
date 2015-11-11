@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.2)
 project(FlukaConverter)
 
-find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+#find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     # require at least gcc 4.8
@@ -21,7 +21,7 @@ set(CMAKE_C_COMPILER clang)
 set(CMAKE_CXX_COMPILER clang++)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
 
-set(SOURCE_FILES main.cpp include/Converter.h include/ParsedElement.h include/ReaderPolicy.h src/ReaderPolicy.cpp include/Converter.tcc include/Exceptions.h include/PredefinedConverters.h include/WriterPolicy.h include/Utils.h src/WriterPolicy.cpp)
+set(SOURCE_FILES main.cpp include/Converter.h include/ParsedElement.h include/ReaderPolicy.h src/ReaderPolicy.cpp include/Converter.tcc include/Exceptions.h include/PredefinedConverters.h include/WriterPolicy.h include/Utils.h src/WriterPolicy.cpp include/Filter.h src/Filter.cpp)
 
 #currently boost 1.59 not working on mac
 #include(BoostTestHelpers.cmake)

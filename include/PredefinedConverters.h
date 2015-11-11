@@ -14,5 +14,10 @@ namespace FConverter {
      public:
          ResnucTabExcelConverter(const std::string& fInput, const std::string& fOutput) : Converter(fInput, fOutput) {}
      };
+
+    class ResnucSumExcelConverter : public Converter<ResnucSumReaderPolicy, ExcelWriterPolicy>{
+    public:
+        ResnucSumExcelConverter(const std::string& fInput, const std::string& fOutput) : Converter(fInput, fOutput) {}
+    };
 }
 #endif //FLUKACONVERTER_PREDEFINEDCONVERTERS_H
