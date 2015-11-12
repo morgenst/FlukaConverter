@@ -16,7 +16,7 @@ namespace FConverter {
         virtual bool apply(std::vector<std::string>&&) = 0;
     protected:
         ValType m_threshold;
-        bool skipElement(std::vector<std::string>&&);
+        bool skipElement(std::vector<std::string>&&){};
     };
 /*
     template<ResnucTabReaderPolicy Type, float ValType, unsigned int Element>

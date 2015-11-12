@@ -18,6 +18,7 @@ namespace FConverter {
     using SingleParsedElement = std::queue<std::shared_ptr<ParsedElement>>;
     using ParsedElements = std::shared_ptr<SingleParsedElement>;
     using ParsedData = std::map<std::shared_ptr<HeaderElement>, ParsedElements>;
+    using ParsedDataElement = decltype(ParsedData().begin());
 
     class ReaderPolicy {
     public:
@@ -44,12 +45,16 @@ namespace FConverter {
     private:
         void readZ(std::string&& );
         void parseA(std::string&& );
-        void parseUncertainty(std::string&&);
+        void parseUncertainty(std::string&& );
+        void parseIsomeres();
+        void parseDetector(ParsedData& parsedData);
+        void addRow();
         std::string m_iCurrentA;
         std::forward_list<std::string> m_lZ;
         std::forward_list<std::string> m_lAct;
         std::forward_list<std::string> m_lUncertainty;
-
+        std::unique_ptr<FileContent> m_pFileContent;
+        ParsedDataElement m_CurrentDetector;
     };
 }
 #endif //FLUKACONVERTER_READER_H

@@ -27,6 +27,7 @@ namespace FConverter{
 
     void ExcelWriterPolicy::addCell(const Value& value){
         m_fOutput << "<Cell> ";
+        //todo: get type from regex
         m_fOutput << "<Data ss:Type=\"String\">" << value << "</Data> ";
         m_fOutput << "</Cell> \n";
     }
