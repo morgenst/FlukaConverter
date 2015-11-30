@@ -12,7 +12,7 @@ namespace FConverter{
     class ParsedElement{
     public:
         virtual ParsedType getType() noexcept = 0;
-        virtual std::string getVal() noexcept = 0;
+        virtual std::string getVal() const noexcept = 0;
 
     protected:
         std::string m_val;
@@ -23,7 +23,7 @@ namespace FConverter{
         HeaderElement() = delete;
         HeaderElement(std::string&& val){ boost::trim(val); m_val = val; }
         inline ParsedType getType() noexcept override { return ParsedType::header; }
-        std::string getVal() noexcept override { return m_val; }
+        std::string getVal() const noexcept override { return m_val; }
     };
 
     class RowElement : public ParsedElement{
@@ -31,14 +31,14 @@ namespace FConverter{
         RowElement() = delete;
         RowElement(std::string&& val){ boost::trim(val); m_val = val; }
         inline ParsedType getType() noexcept override { return ParsedType::row; }
-        std::string getVal() noexcept override { return m_val; }
+        std::string getVal() const noexcept override { return m_val; }
     };
 
     class SkipElement : public ParsedElement{
     public:
         SkipElement(){}
         inline ParsedType getType() noexcept override { return ParsedType::skip; }
-        std::string getVal() noexcept override { return ""; }
+        std::string getVal() const noexcept override { return ""; }
 
     };
 }

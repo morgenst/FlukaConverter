@@ -9,7 +9,7 @@ using namespace std;
 namespace po = boost::program_options;
 
 #ifndef _MSC_VER
-int main(int argc, const char** argv) {
+int main(int argc, char** argv) {
     po::options_description parser("FlukaConverter converts FLUKA RESNUCLei ASCII output to Excel xml format.");
     parser.add_options()
             ("infile,i", po::value<string>()->required(), "input file")
@@ -22,7 +22,14 @@ int main(int argc, const char** argv) {
         cout << parser << "\n";
         return 0;
     }
-    auto fInput = vm["infile"].as<string>();
+    string fInput;
+    try {
+        fInput = vm["infile"].as<string>();
+    }
+    catch(boost::exception const& ex){
+        cout << "Input file does not exist.";
+        return EXIT_FAILURE;
+    }
     if(boost::ends_with(fInput, "_tab.lis")) {
         FConverter::ResnucTabExcelConverter converter(fInput,
                                                       vm["outfile"].as<string>());

@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <regex>
 
 #include "WriterPolicy.h"
 #include "Utils.h"
@@ -12,6 +13,12 @@ namespace FConverter{
     using namespace std;
     void WriterPolicy::open(const std::string &fOutput) {
         m_fOutput.open(fOutput.c_str());
+    }
+
+    string WriterPolicy::guessType(const Value& val) {
+        if (std::regex_match(val, rFloat))
+            return "Number";
+        return "String";
     }
 
 
@@ -27,8 +34,8 @@ namespace FConverter{
 
     void ExcelWriterPolicy::addCell(const Value& value){
         m_fOutput << "<Cell> ";
-        //todo: get type from regex
-        m_fOutput << "<Data ss:Type=\"String\">" << value << "</Data> ";
+        auto type = guessType(value);
+        m_fOutput << "<Data ss:Type=\"" << type << "\">" << value << "</Data> ";
         m_fOutput << "</Cell> \n";
     }
 

@@ -20,11 +20,17 @@ namespace FConverter{
         using DataElement = std::pair<const std::shared_ptr<HeaderElement>, std::vector<std::vector<std::string>>>;
         using Data = std::vector<std::string>;
         using Value = std::string;
-        std::ofstream m_fOutput;
-        void open(const std::string&);
+
     public:
         virtual void invoke(const std::string&, const DataCollection &) = 0;
 
+    protected:
+        std::string guessType(const Value&);
+        void open(const std::string&);
+        std::ofstream m_fOutput;
+
+    private:
+        const std::regex rFloat {"[0-9]*\\.?[0-9]*([Ee][+-]?[0-9]+)?"};
     };
 
     class ExcelWriterPolicy : public WriterPolicy{
