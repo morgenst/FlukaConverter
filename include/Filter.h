@@ -13,10 +13,10 @@ namespace FConverter {
     class ZeroActivityFilter {
         using InputType = std::vector<std::vector<std::string>>;
     public:
-        ZeroActivityFilter(const float& threshold) : m_threshold(threshold){}
-        InputType apply(InputType &&);
+        ZeroActivityFilter(const double& threshold) : m_threshold(threshold){}
+        void apply(InputType*);
     protected:
-        float m_threshold;
+        double m_threshold;
     };
 }
 

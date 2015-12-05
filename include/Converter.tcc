@@ -72,9 +72,7 @@ namespace FConverter {
                 currentHeader->second.emplace_back(std::move(res));
                 parsedElements->pop();
             }
-            //todo: call to filter using ReaderPolicy for current Element
-            //currentHeader.second =
-            currentHeader->second=filter.apply(std::move(currentHeader->second));
+            filter.apply(&currentHeader->second);
         }
     }
 
