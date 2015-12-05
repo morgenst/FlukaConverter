@@ -16,6 +16,7 @@
 #include "boost/filesystem/operations.hpp"
 #include "boost/filesystem/path.hpp"
 #include "Utils.h"
+#include "Filter.h"
 
 using namespace std;
 using namespace boost;
@@ -58,6 +59,7 @@ namespace FConverter {
     template <typename ReadPolicy, typename WritePolicy>
     void Converter<ReadPolicy, WritePolicy>::transform(ParsedData&& parsedData){
         Data::iterator currentHeader;
+        ZeroActivityFilter<ReadPolicy> filter(0.);
         for(auto parsedDetector : parsedData){
             auto headerPtr = parsedDetector.first;
             m_data[headerPtr] = vector<vector<string>>{};
@@ -70,6 +72,9 @@ namespace FConverter {
                 currentHeader->second.emplace_back(std::move(res));
                 parsedElements->pop();
             }
+            //todo: call to filter using ReaderPolicy for current Element
+            //currentHeader.second =
+            currentHeader->second=filter.apply(std::move(currentHeader->second));
         }
     }
 

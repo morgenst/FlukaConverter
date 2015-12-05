@@ -9,21 +9,16 @@
 #include "ReaderPolicy.h"
 
 namespace FConverter {
-    template<typename Type, typename ValType, unsigned int Element>
-    class ThresholdFilter {
+    template<typename Type>
+    class ZeroActivityFilter {
+        using InputType = std::vector<std::vector<std::string>>;
     public:
-        ThresholdFilter(const ValType& threshold) : m_threshold(threshold){}
-        virtual bool apply(std::vector<std::string>&&) = 0;
+        ZeroActivityFilter(const float& threshold) : m_threshold(threshold){}
+        InputType apply(InputType &&);
     protected:
-        ValType m_threshold;
-        bool skipElement(std::vector<std::string>&&){};
+        float m_threshold;
     };
-/*
-    template<ResnucTabReaderPolicy Type, float ValType, unsigned int Element>
-    class ThresholdFilter{
-        bool apply(std::vector<std::string>&&);
-
-    };
-    */
 }
+
+#include "Filter.tcc"
 #endif //FLUKACONVERTER_FILTER_H

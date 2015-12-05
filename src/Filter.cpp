@@ -6,18 +6,23 @@
 
 using namespace std;
 namespace FConverter {
-    /*
-    template<ResnucTabReaderPolicy, typename ValType, unsigned int Element>
-    bool ThresholdFilter<ResnucTabReaderPolicy, ValType, Element>::apply(vector<string> &&data) {
-        if (data.size() == 4)
-            return ThresholdFilter<ResnucTabReaderPolicy, float, 3>::remove(std::forward(data));
-        else if (data.size() == 5)
-            return ThresholdFilter<ResnucTabReaderPolicy, float, 4>::remove(std::forward(data));
-    };
+    template <>
+    ZeroActivityFilter<ResnucTabReaderPolicy>::InputType ZeroActivityFilter<ResnucTabReaderPolicy>::apply(ZeroActivityFilter<ResnucTabReaderPolicy>::InputType&& data){
+        data.erase(remove_copy_if(data.begin(),
+                                  data.end(),
+                                  data.begin(),
+                                  [](auto elem) -> bool{return atof(elem.rbegin()[1].c_str()) == 0.;}),
+                   data.end());
+        return data;
+    }
 
-    template<typename Type, typename ValType, unsigned int Element>
-    bool ThresholdFilter<Type, ValType, Element>::skipElement(std::vector<std::string> &&data) {
-        return data.at(Element) > m_threshold;
-    };
-     */
+    template <>
+    ZeroActivityFilter<ResnucSumReaderPolicy>::InputType ZeroActivityFilter<ResnucSumReaderPolicy>::apply(ZeroActivityFilter<ResnucSumReaderPolicy>::InputType&& data){
+        data.erase(remove_copy_if(data.begin(),
+                                  data.end(),
+                                  data.begin(),
+                                  [](auto elem) -> bool{return atof(elem.rbegin()[1].c_str()) == 0.;}),
+                   data.end());
+        return data;
+    }
 }
