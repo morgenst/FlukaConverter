@@ -59,7 +59,7 @@ namespace FConverter {
     template <typename ReadPolicy, typename WritePolicy>
     void Converter<ReadPolicy, WritePolicy>::transform(ParsedData&& parsedData){
         Data::iterator currentHeader;
-        ZeroActivityFilter<ReadPolicy> filter(0.);
+        ActivityFilter filter(0.);
         for(auto parsedDetector : parsedData){
             auto headerPtr = parsedDetector.first;
             m_data[headerPtr] = vector<vector<string>>{};

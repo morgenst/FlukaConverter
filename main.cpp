@@ -14,6 +14,7 @@ int main(int argc, char** argv) {
     parser.add_options()
             ("infile,i", po::value<string>()->required(), "input file")
             ("outfile,o", po::value<string>()->required(), "output file")
+            ("activityfilter,af", po::value<double>()->default_value(-1.),"apply activity filter")
             ("help,h", "print help message")
             ;
     po::variables_map vm;
@@ -30,6 +31,8 @@ int main(int argc, char** argv) {
         cout << "Input file does not exist.";
         return EXIT_FAILURE;
     }
+    if(vm["activityfilter"].as<double>() != -1.)
+
     if(boost::ends_with(fInput, "_tab.lis")) {
         FConverter::ResnucTabExcelConverter converter(fInput,
                                                       vm["outfile"].as<string>());
