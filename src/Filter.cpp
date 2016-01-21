@@ -8,6 +8,9 @@
 
 using namespace std;
 namespace FConverter {
+
+    shared_ptr<FilterStore> FilterStore::m_Instance = nullptr;
+
     void ActivityFilter::apply(InputType* data){
         data->erase(remove_copy_if(data->begin(),
                                    data->end(),

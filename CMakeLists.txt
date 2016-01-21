@@ -21,7 +21,7 @@ set(CMAKE_C_COMPILER gcc)
 set(CMAKE_CXX_COMPILER g++)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
 
-set(SOURCE_FILES main.cpp include/Converter.h include/ParsedElement.h include/ReaderPolicy.h src/ReaderPolicy.cpp include/Converter.tcc include/Exceptions.h include/PredefinedConverters.h include/WriterPolicy.h include/Utils.h src/WriterPolicy.cpp include/Filter.h include/Filter.tcc src/Filter.cpp)
+set(SOURCE_FILES main.cpp include/Converter.h include/ParsedElement.h include/ReaderPolicy.h src/ReaderPolicy.cpp include/Converter.tcc include/Exceptions.h include/PredefinedConverters.h include/WriterPolicy.h include/Utils.h src/WriterPolicy.cpp include/Filter.h src/Filter.cpp)
 
 #currently boost 1.59 not working on mac
 #include(BoostTestHelpers.cmake)

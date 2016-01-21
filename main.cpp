@@ -1,11 +1,13 @@
 #include <iostream>
 #include "boost/program_options.hpp"
 #include "PredefinedConverters.h"
+#include "Filter.h"
 
 #ifdef _MSC_VER
 #include "MainFrame.h"
 #endif
 using namespace std;
+using namespace FConverter;
 namespace po = boost::program_options;
 
 #ifndef _MSC_VER
@@ -14,7 +16,7 @@ int main(int argc, char** argv) {
     parser.add_options()
             ("infile,i", po::value<string>()->required(), "input file")
             ("outfile,o", po::value<string>()->required(), "output file")
-            ("activityfilter,af", po::value<double>()->default_value(-1.),"apply activity filter")
+            ("activityfilter,f", po::value<double>()->default_value(-1.),"apply activity filter")
             ("help,h", "print help message")
             ;
     po::variables_map vm;
@@ -31,7 +33,11 @@ int main(int argc, char** argv) {
         cout << "Input file does not exist.";
         return EXIT_FAILURE;
     }
-    if(vm["activityfilter"].as<double>() != -1.)
+    if(vm["activityfilter"].as<double>() != -1.){
+        auto filterStore = FilterStore::getInstance();
+        filterStore->registerFilter(make_unique<ActivityFilter>(vm["activityfilter"].as<double>()));
+
+    }
 
     if(boost::ends_with(fInput, "_tab.lis")) {
         FConverter::ResnucTabExcelConverter converter(fInput,

@@ -17,6 +17,8 @@
 #include "boost/filesystem/path.hpp"
 #include "Utils.h"
 #include "Filter.h"
+#include "ReaderPolicy.h"
+#include "WriterPolicy.h"
 
 using namespace std;
 using namespace boost;
@@ -38,6 +40,7 @@ namespace FConverter {
         catch(InvalidInput&){
             exit(1);
         }
+        applyFilters();
         write();
     }
 
@@ -97,5 +100,20 @@ namespace FConverter {
     void Converter<ReadPolicy, WritePolicy>::write() {
         invoke(m_fOutput, std::move(m_data));
     }
+
+    template<typename ReaderPolicy, typename WriterPolicy>
+    void Converter<ReaderPolicy, WriterPolicy>::applyFilters(){
+        auto filterStore = FilterStore::getInstance();
+        for(const auto& pFilter : *(filterStore->receive()))
+            applyFilter(pFilter);
+    };
+
+    template <typename ReaderPolicy, typename WriterPolicy>
+    void Converter<ReaderPolicy, WriterPolicy>::applyFilter(const std::unique_ptr<Filter>& pFilter) {
+        for(auto& kv : m_data)
+            pFilter->apply(&kv.second);
+    }
+
 }
+
 #endif //FLUKACONVERTER_CONVERTER_TCC

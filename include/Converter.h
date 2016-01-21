@@ -16,6 +16,7 @@
 #include <string>
 #include <vector>
 #include "Exceptions.h"
+#include "Filter.h"
 #include "ParsedElement.h"
 
 namespace FConverter{
@@ -47,6 +48,8 @@ namespace FConverter{
         void read() throw(InvalidInput);
         void write();
         void transform(ParsedData&&);
+		void applyFilters();
+        void applyFilter(const std::unique_ptr<Filter>& pFilter);
         std::string m_fInput;
         std::string m_fOutput;
         Data m_data;
